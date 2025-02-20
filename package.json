@@ -3,19 +3,22 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "format": "prettier --check .",
-        "format:fix": "prettier --write ."
+        "format:fix": "prettier --write .",
+        "db:generate": "drizzle-kit generate"
     },
     "dependencies": {
-        "@stackframe/stack": "2.7.6",
         "@neondatabase/serverless": "0.10.4",
+        "@stackframe/stack": "2.7.6",
+        "drizzle-orm": "^0.39.3",
         "next": "15.1.6",
         "react": "^19.0.0",
-        "react-dom": "^19.0.0"
+        "react-dom": "^19.0.0",
+        "stripe": "^17.6.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
@@ -27,7 +30,9 @@
         "postcss": "^8",
         "tailwindcss": "^3.4.1",
         "typescript": "^5",
-        "prettier": "^3.5.1"
+        "prettier": "^3.5.1",
+        "drizzle-kit": "^0.30.4",
+        "dotenv": "^16.4.7"
     },
     "engines": {
         "node": ">=18"
