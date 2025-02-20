@@ -26,27 +26,27 @@ This is a [Next.js](https://nextjs.org) project using the App Router that server
 
 1. Install dependencies:
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 2. Create `.env.local` file and copy the variables from the Neon Auth dashboard:
 
-   ```
-   # Stack Auth
-   NEXT_PUBLIC_STACK_PROJECT_ID=
-   NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=
-   STACK_SECRET_SERVER_KEY=
+    ```
+    # Stack Auth
+    NEXT_PUBLIC_STACK_PROJECT_ID=
+    NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=
+    STACK_SECRET_SERVER_KEY=
 
-   # Database connections
-   DATABASE_URL=              # neondb_owner role connection
-   ```
+    # Database connections
+    DATABASE_URL=              # neondb_owner role connection
+    ```
 
 3. Run the development server:
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
