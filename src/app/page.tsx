@@ -1,5 +1,33 @@
 import { Header } from '@/app/header';
+import { stackServerApp } from '@/stack';
 import Image from 'next/image';
+import React from 'react';
+import { createNeonBucksCheckoutSessionUrl, getNeonBucks } from './actions';
+import RedirectButton from '@/components/RedirectButton';
+
+async function NeonBucks() {
+    const user = await stackServerApp.getUser();
+    if (!user) {
+        return <p className="mb-4 italic">You must be logged in to see your Neon Bucks.</p>;
+    }
+
+    const bucks = await getNeonBucks(user.id);
+    return (
+        <p className="mb-4">
+            You have {bucks} Neon Bucks.
+            <RedirectButton
+                href={async () => {
+                    'use server';
+
+                    return createNeonBucksCheckoutSessionUrl(user.id);
+                }}
+                className="ml-2 underline hover:no-underline"
+            >
+                Buy more →
+            </RedirectButton>
+        </p>
+    );
+}
 
 export default function Home() {
     return (
@@ -9,31 +37,20 @@ export default function Home() {
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start relative z-10">
                 <header className="flex flex-col gap-2 items-start max-w-xl">
                     <h1 className="font-title text-[48px] font-medium leading-none -tracking-[0.03em] text-white xl:text-[48px] lg:text-[32px] sm:text-[32px]">
-                        Neon Auth{' '}
+                        Neon Auth + Stripe{' '}
                     </h1>
                     <p className="text-medium mt-0">Effortless Authentication for Modern Apps!</p>
                 </header>
+
                 <section className="flex flex-col gap-4 mx-auto max-w-xl">
                     <p className="text-sm text-gray-300 mb-4">
-                        This example app allows users to create a user account. When a user creates an account, their
-                        data is automatically synced to your Neon database. Create an account via the sign up button
-                        above to try it yourself.
+                        This example app allows users to create a user account and pay for "Neon Bucks" using Stripe. In
+                        reality, you will want to make your own items (see all the TODO's in this application), but this
+                        demos Stripe webhooks, checkout, and Drizzle with Neon Auth.
                     </p>
-                    <p className="text-sm text-gray-300 mb-4">
-                        Neon Auth connects{' '}
-                        <a
-                            className="hover:underline hover:underline-offset-4
-              text-primary-1 hover-text-[#00e5bf]"
-                            href="https://stack-auth.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Stack Auth
-                        </a>{' '}
-                        to your Neon database, automatically synchronizing user profiles so that you own your auth data.
-                        Access your user data directly in your database environment, with no custom integration code
-                        needed.
-                    </p>
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                        <NeonBucks />
+                    </React.Suspense>
                 </section>
 
                 <ol className="list-inside text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
@@ -55,6 +72,16 @@ export default function Home() {
                             rel="noopener noreferrer"
                         >
                             Stack Auth documentation →
+                        </a>
+                    </li>
+                    <li className="mb-2">
+                        <a
+                            className="flex items-center gap-2 hover:underline hover:underline-offset-4 text-primary-1 hover-text-[#00e5bf]"
+                            href="https://docs.stripe.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Stripe documentation →
                         </a>
                     </li>
                 </ol>

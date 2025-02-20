@@ -1,17 +1,19 @@
 # Neon Auth - Next.js Template App
 
-This is a [Next.js](https://nextjs.org) project using the App Router that servers as template for the [Neon Auth](https://neon.tech/docs/guides/neon-identity) integration with [Stack Auth](https://docs.stack-auth.com/overview).
+This is a [Next.js](https://nextjs.org) project using the App Router that servers as template for the [Neon Auth](https://neon.tech/docs/guides/neon-identity) integration with [Stack Auth](https://docs.stack-auth.com/overview) and [Stripe](https://stripe.com).
 
 ## Features
 
 - Next.js with the App Router, TypeScript and Tailwind CSS
 - User authentication powered by Stack Auth
 - Integration with Neon Auth
+- Integration with Stripe (including webhooks and checkout sessions)
 - Ready-to-deploy configuration for Vercel, Netlify, and Render
 
 ## Prerequisites
 
 - [Neon](https://neon.tech) account
+- [Stripe](https://stripe.com) account
 - Node.js 18+ installed locally
 
 ## Local Development Setup
@@ -22,7 +24,17 @@ This is a [Next.js](https://nextjs.org) project using the App Router that server
 2. Navigate into Neon Auth
 3. Click "Connect" and go through the OAuth flow until your Neon Auth integration is set
 
-### 2. Run the development server
+### 2. Set up Stripe
+
+1. Navigate into Stripe
+2. Create a new webhook (not needed for demo, but needed in production)
+3. Copy the webhook secret
+4. Create a new product and price in Stripe
+5. Add the price ID to the `.env.local` file
+
+You will want to edit everywhere marked with `TODO` to match your own project.
+
+### 3. Run the development server
 
 1. Install dependencies:
 
@@ -58,6 +70,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Authors
 
 - [Pedro Figueiredo](https://github.com/pffigueiredo)
+- [Astrid Gealer](https://github.com/iamjsd)
 
 ## Contributing
 
