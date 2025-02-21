@@ -45,13 +45,24 @@ You will want to edit everywhere marked with `TODO` to match your own project.
 2. Create `.env.local` file and copy the variables from the Neon Auth dashboard:
 
     ```
-    # Stack Auth
+    # Stack Auth keys
     NEXT_PUBLIC_STACK_PROJECT_ID=
     NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=
     STACK_SECRET_SERVER_KEY=
-
-    # Database connections
-    DATABASE_URL=              # neondb_owner role connection
+    
+    # For the `neondb_owner` role.
+    DATABASE_URL=
+    
+    # Stripe keys
+    STRIPE_SECRET_KEY=
+    STRIPE_WEBHOOK_SECRET=
+    NEXT_PUBLIC_STRIPE_PUBLIC_KEY=
+    
+    # App URL
+    NEXT_PUBLIC_APP_URL=http://localhost:3000
+    
+    # Example Stripe price ID
+    STRIPE_NEON_BUCKS_PRICE_ID=
     ```
 
 3. Run the development server:
