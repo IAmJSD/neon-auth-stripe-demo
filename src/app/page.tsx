@@ -44,9 +44,9 @@ export default function Home() {
 
                 <section className="flex flex-col gap-4 mx-auto max-w-xl">
                     <p className="text-sm text-gray-300 mb-4">
-                        This example app allows users to create a user account and pay for "Neon Bucks" using Stripe. In
-                        reality, you will want to make your own items (see all the TODO's in this application), but this
-                        demos Stripe webhooks, checkout, and Drizzle with Neon Auth.
+                        This example app allows users to create a user account and pay for {'"Neon Bucks"'} using
+                        Stripe. In reality, you will want to make your own items (see all the TODO comments in this
+                        application), but this demos Stripe webhooks, checkout, and Drizzle with Neon Auth.
                     </p>
                     <React.Suspense fallback={<div>Loading...</div>}>
                         <NeonBucks />
